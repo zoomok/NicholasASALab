@@ -53,7 +53,7 @@
 4. Run Polybase 6 steps process
 	- PolybaseDemo.sql
 	- MonitoringThePolybaseLoad.sql
-	
+
 5. Monitor and confirm successful migration
 
 6. Confirm 60 distributions in destination table
