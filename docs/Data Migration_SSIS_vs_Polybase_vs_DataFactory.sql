@@ -64,11 +64,11 @@
 -- Fact table is heavy (count = 37,605,696)
 --===========================================================================================================================
 1. Export table to flat file
-
+--> Lab 3
 2. Create blob storage account
-
+--> Lab 3
 3. Upload flat file to blog storage
-
+--> Lab 3
 4. Create Data Factory account
 
 5. Create destination table
