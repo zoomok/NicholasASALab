@@ -39,7 +39,7 @@ GO
 CREATE DATABASE SCOPED CREDENTIAL BlobStorageCredential
 WITH
     IDENTITY = 'blobuser',  
-	SECRET = 'ZYfcNUnKJLRqDpZDwly1dUb8bsXe3NP8Ti4nLXCbd8jhYwEoWaBUohGN3cK4eQ0mCKr6WAEBAaUSQmY8b3hhzA=='   
+	SECRET = 'BSAWfXUY402UuBWQJHBTMDgRQ+5ET3d696QpYvKtP9TouPWHX4eAUT6sxgQvJRt27kr/Mt15Gv93n9rr0xzkmA=='
 ;
 GO
 
@@ -54,7 +54,7 @@ GO
 CREATE EXTERNAL DATA SOURCE AzureBlobStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION = 'wasbs://demofiles@synapsestorage108.blob.core.windows.net',
+    LOCATION = 'wasbs://demo@datalake0318.blob.core.windows.net',
     CREDENTIAL = BlobStorageCredential
 );
 GO
