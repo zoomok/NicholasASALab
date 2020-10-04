@@ -63,6 +63,19 @@
 -- Lab 4 : Load FactTransactionHistory in On-premises to Azure DW using Azure Data Factory
 -- Fact table is heavy (count = 37,605,696)
 --===========================================================================================================================
+1. Export table to flat file
+
+2. Create blob storage account
+
+3. Upload flat file to blog storage
+
+4. Create Data Factory account
+
+5. Create destination table
+
+6. Ccreate and run Data factory pipeline to move data
+
+7. Monitor and verify destination table
 
 
 
