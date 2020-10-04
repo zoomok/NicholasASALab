@@ -2,8 +2,7 @@
 Use AdventureWorksDW2012
 go
 
-SELECT
-	p.ProductKey + (a.number * 1000) AS ProductKey,
+SELECT	p.ProductKey + (a.number * 1000) AS ProductKey,
 	p.EnglishProductName + CONVERT(VARCHAR, (a.number * 1000)) AS EnglishProductName,
 	p.ProductAlternateKey + '-' + CONVERT(VARCHAR, (a.number * 1000)) AS ProductAlternateKey,
 	p.FinishedGoodsFlag,
@@ -24,12 +23,12 @@ SELECT
 	p.ModelName,
 	p.StartDate,
 	p.EndDate
-INTO DimBigProduct
-FROM DimProduct AS p
+INTO 	DimBigProduct
+FROM 	DimProduct AS p
 CROSS JOIN master..spt_values AS a
-WHERE
-	a.type = 'p'
-	AND a.number BETWEEN 1 AND 50
+WHERE	a.type = 'p'
+AND 	a.number BETWEEN 1 AND 50
+
 GO
 
 
@@ -42,25 +41,16 @@ ADD CONSTRAINT pk_DimBigProduct PRIMARY KEY (ProductKey)
 GO
 
 
-SELECT 
-	ROW_NUMBER() OVER 
-	(
-		ORDER BY 
-			x.TransactionDate,
-			(SELECT NEWID())
-	) AS TransactionID,
+SELECT 	ROW_NUMBER() OVER (ORDER BY x.TransactionDate, (SELECT NEWID())) AS TransactionID,
 	p1.ProductKey,
 	x.TransactionDate OrderDate,
 	x.Quantity,
 	CONVERT(MONEY, p1.ListPrice * x.Quantity * RAND(CHECKSUM(NEWID())) * 2) AS ActualCost
-INTO FactTransactionHistory
-FROM
-(
-	SELECT
-		p.ProductKey, 
+INTO 	FactTransactionHistory
+FROM	(
+	SELECT	p.ProductKey, 
 		p.ListPrice,
-		CASE
-			WHEN p.ProductKey % 26 = 0 THEN 26
+		CASE	WHEN p.ProductKey % 26 = 0 THEN 26
 			WHEN p.ProductKey % 25 = 0 THEN 25
 			WHEN p.ProductKey % 24 = 0 THEN 24
 			WHEN p.ProductKey % 23 = 0 THEN 23
@@ -87,28 +77,20 @@ FROM
 			WHEN p.ProductKey % 2 = 0 THEN 2
 			ELSE 1 
 		END AS ProductGroup
-	FROM DimBigProduct p
-) AS p1
+	FROM 	DimBigProduct p
+	) AS p1
 CROSS APPLY
-(
-	SELECT
-		transactionDate,
-		CONVERT(INT, (RAND(CHECKSUM(NEWID())) * 100) + 1) AS Quantity
-	FROM
 	(
-		SELECT 
-			DATEADD(dd, number, '20130101') AS transactionDate,
-			NTILE(p1.ProductGroup) OVER 
-			(
-				ORDER BY number
-			) AS groupRange
-		FROM master..spt_values
-		WHERE 
-			type = 'p'
-	) AS z
-	WHERE
-		z.groupRange % 2 = 1
-) AS x
+	SELECT	transactionDate,
+		CONVERT(INT, (RAND(CHECKSUM(NEWID())) * 100) + 1) AS Quantity
+	FROM	(
+		SELECT 	DATEADD(dd, number, '20130101') AS transactionDate,
+			NTILE(p1.ProductGroup) OVER (ORDER BY number) AS groupRange
+		FROM 	master..spt_values
+		WHERE	type = 'p'
+		) AS z
+	WHERE	z.groupRange % 2 = 1
+	) AS x
 
 -- (37605696 row(s) affected)
 
@@ -123,8 +105,7 @@ ADD CONSTRAINT pk_FactTransactionHistory PRIMARY KEY (TransactionID)
 GO
 
 
-CREATE NONCLUSTERED INDEX IX_ProductId_TransactionDate
-ON FactTransactionHistory
+CREATE NONCLUSTERED INDEX IX_ProductId_TransactionDate ON FactTransactionHistory
 (
 	ProductKey,
 	OrderDate
