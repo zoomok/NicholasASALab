@@ -1,3 +1,7 @@
+-- Local SQL Server (DESKTOP-E7F3VBA\SQLEXPRESS)
+Use AdventureWorksDW2012
+Go
+
 -- First let's look at what round-robin would look like
 select	cp.[distribution],
 		count(*) distributionRecords
