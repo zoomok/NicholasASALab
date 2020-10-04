@@ -51,7 +51,8 @@
 	- upload to container(demo)/(folder)FTH
 
 4. Run Polybase 6 steps process
-	- 
+	- PolybaseDemo.sql
+	- MonitoringThePolybaseLoad.sql
 	
 5. Monitor and confirm successful migration
 
