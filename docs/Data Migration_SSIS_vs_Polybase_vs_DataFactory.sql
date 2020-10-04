@@ -74,7 +74,7 @@
 
 4. Create Data Factory account
 	- datafactory-0318
-	- Pipeline : [prod].[FactTransactionHistoryADF]
+	- Pipeline : 004_PL_COPY_ADLS_Synapse_DW
 
 5. Create destination table
 SQL>
@@ -88,7 +88,8 @@ CREATE TABLE [prod].[FactTransactionHistoryADF]
 )
 
 6. Ccreate and run Data factory pipeline to move data
---> Run ADF pipeline
+	--> Run ADF pipeline
+	-- Duration : 00:05:19
 
 7. Monitor and verify destination table
 	--> Monitor pipeline
