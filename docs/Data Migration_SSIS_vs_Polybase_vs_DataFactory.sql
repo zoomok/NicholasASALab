@@ -59,8 +59,10 @@
 6. Confirm 60 distributions in destination table
 	- DBCC PDW_SHOWSPACEUSED('prod.FactTransactionHistory');
 
-
-
+--===========================================================================================================================
+-- Lab 4 : Load FactTransactionHistory in On-premises to Azure DW using Azure Data Factory
+-- Fact table is heavy (count = 37,605,696)
+--===========================================================================================================================
 
 
 
