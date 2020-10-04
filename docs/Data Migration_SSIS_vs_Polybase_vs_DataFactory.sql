@@ -60,7 +60,7 @@
 	- DBCC PDW_SHOWSPACEUSED('prod.FactTransactionHistory');
 
 --===========================================================================================================================
--- Lab 4 : Load FactTransactionHistory in On-premises to Azure DW using Azure Data Factory
+-- Lab 4 : Load FactTransactionHistory in On-premises to Azure DW using Azure Data Factory (Polybase option)
 -- Fact table is heavy (count = 37,605,696)
 --===========================================================================================================================
 1. Export table to flat file
@@ -98,19 +98,6 @@ CREATE TABLE [prod].[FactTransactionHistoryADF]
 	from	[prod].[FactTransactionHistoryADF]
 	--> 37,605,696
 	- DBCC PDW_SHOWSPACEUSED('prod.FactTransactionHistoryADF');
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
