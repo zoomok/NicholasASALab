@@ -65,13 +65,27 @@
 --===========================================================================================================================
 1. Export table to flat file
 --> Lab 3
+
 2. Create blob storage account
 --> Lab 3
+
 3. Upload flat file to blog storage
 --> Lab 3
+
 4. Create Data Factory account
+	- datafactory-0318
+	- Pipeline : [prod].[FactTransactionHistoryADF]
 
 5. Create destination table
+SQL>
+CREATE TABLE [prod].[FactTransactionHistoryADF]
+(
+	[TransactionID] [int] NOT NULL,
+	[ProductKey] [int] NOT NULL,
+	[OrderDate] [datetime] NULL,
+	[Quantity] [int] NULL,
+	[ActualCost] [money] NULL
+)
 
 6. Ccreate and run Data factory pipeline to move data
 
