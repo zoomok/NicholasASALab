@@ -18,7 +18,6 @@ order by [distribution]
 ;
 
 -- Now if we wanted to explore hash key distribution, what should we pick?
-
 select	cs.name,
 		tt.name
 from	sys.columns cs,
