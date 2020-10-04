@@ -88,8 +88,15 @@ CREATE TABLE [prod].[FactTransactionHistoryADF]
 )
 
 6. Ccreate and run Data factory pipeline to move data
+--> Run ADF pipeline
 
 7. Monitor and verify destination table
+	--> Monitor pipeline
+	- SQL>
+	select	count(1)
+	from	[prod].[FactTransactionHistoryADF]
+	- DBCC PDW_SHOWSPACEUSED('prod.FactTransactionHistory');
+
 
 
 
