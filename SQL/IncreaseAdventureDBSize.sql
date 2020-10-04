@@ -135,3 +135,13 @@ INCLUDE
 	ActualCost
 )
 GO
+
+select	count(1)
+from	DimBigProduct
+;
+--> 30,300
+
+select	count(*)
+from	FactTransactionHistory
+;
+--> 37,605,696
