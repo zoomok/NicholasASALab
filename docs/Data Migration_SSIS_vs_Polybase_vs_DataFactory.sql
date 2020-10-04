@@ -95,7 +95,8 @@ CREATE TABLE [prod].[FactTransactionHistoryADF]
 	- SQL>
 	select	count(1)
 	from	[prod].[FactTransactionHistoryADF]
-	- DBCC PDW_SHOWSPACEUSED('prod.FactTransactionHistory');
+	--> 37,605,696
+	- DBCC PDW_SHOWSPACEUSED('prod.FactTransactionHistoryADF');
 
 
 
